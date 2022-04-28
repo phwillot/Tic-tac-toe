@@ -1,45 +1,45 @@
-// Tic-tac-toe game
+'use strict';
 
-const symbols = ['X', 'O'];
-const board = new Array(3).fill(0).map(() => new Array(3).fill('-'));
+const {
+  checkWinColumns,
+  checkWinRows,
+  checkWinDiagonal,
+  printBoard,
+  symbols,
+  board,
+} = require('./modules/utils.js');
 
-const printBoard = function () {
-  let i = 0;
-  console.log('  0 1 2');
-  board.forEach(row => {
-    console.log(i.toString(), row.join(' '));
-    i++;
-  });
+const changePlayer = () => {
+  counterOfTurns % 2 === 0
+    ? (currentSymbol = symbols[0])
+    : (currentSymbol = symbols[1]);
+  return currentSymbol;
 };
 
-const checkWinRows = function () {
-  let hasWon = false;
-  board.forEach(row => {
-    symbols.forEach(symbol => {
-      const win = row.every(value => value === symbol);
-      if (win) hasWon = true;
-    });
-  });
-  return hasWon;
-};
+const prompt = require('prompt-sync')({ sigint: true });
 
-const checkWinDiagonal = function () {
-  let hasWon = false;
-  const symbolsDiag = [];
-  const symbolsAntiDiag = [];
-  symbolsDiag.push(board[0][0], board[1][1], board[2][2]);
-  symbolsAntiDiag.push(board[0][2], board[1][1], board[2][0]);
+let Finish = false;
+let counterOfTurns = 0;
+let currentSymbol = 'X';
 
-  symbols.forEach(symbol => {
-    if (
-      symbolsDiag.every(value => value === symbol) ||
-      symbolsAntiDiag.every(value => value === symbol)
-    )
-      hasWon = true;
-  });
-  return hasWon;
-};
+while (!Finish && counterOfTurns < 8) {
+  printBoard();
+  const currentPlayer = changePlayer();
+  console.log(`Current player: ${currentPlayer}`);
+  let placement = prompt('Please enter where to play: <x><y>: ')
+    .trim()
+    .split(' ');
+  try {
+    if (!symbols.includes(board[placement[0]][placement[1]]))
+      board[placement[0]][placement[1]] = currentPlayer;
+  } catch (error) {
+    console.log(error);
+  }
 
-board[0][2] = board[1][1] = board[2][0] = 'X';
-
-printBoard();
+  if (checkWinColumns() || checkWinDiagonal() || checkWinRows()) {
+    printBoard();
+    console.log(`\nPlayer with ${currentPlayer} wins !`);
+    break;
+  }
+  counterOfTurns++;
+}
