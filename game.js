@@ -13,13 +13,13 @@ const {
 let finished = false;
 let badMove = false;
 let counterOfTurns = 0;
-let currentSymbol = 'X';
-let currentPlayer;
+let currentSymbol;
+let currentPlayer = 'O';
 
 const changePlayer = () => {
   counterOfTurns % 2 === 0
-    ? (currentSymbol = symbols[0])
-    : (currentSymbol = symbols[1]);
+    ? (currentSymbol = symbols[1])
+    : (currentSymbol = symbols[0]);
   return currentSymbol;
 };
 
@@ -36,8 +36,6 @@ while (!finished && counterOfTurns < 10) {
     currentPlayer = changePlayer();
     printBoard();
   }
-
-  if (counterOfTurns === 1) currentPlayer === 'X';
 
   console.log(`Current player: ${currentPlayer}`);
   let placement = play();
@@ -58,5 +56,6 @@ while (!finished && counterOfTurns < 10) {
   } else if (counterOfTurns === 9 && !finished) {
     printBoard();
     console.log(`It's a draw!`);
+    finished = true;
   }
 }
