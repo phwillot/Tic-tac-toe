@@ -1,4 +1,7 @@
 'use strict';
+
+const prompt = require('prompt-sync')({ sigint: true });
+
 const symbols = ['X', 'O'];
 const board = new Array(3).fill(0).map(() => new Array(3).fill('-'));
 
@@ -23,6 +26,7 @@ const checkWinRows = function () {
 };
 
 const checkWinColumns = function () {
+  let hasWon = false;
   let symbolsList = [];
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board.length; j++) {
@@ -31,10 +35,12 @@ const checkWinColumns = function () {
   }
   const sliced = sliceIntoChunks(symbolsList, 3);
   sliced.forEach(row => {
-    const win = row.every(symbol => symbol === 'X' || symbol === 'O');
-    console.log(row); // TO DO Check why it doesnt win
-    if (win) return true;
+    for (const symbol of symbols) {
+      const win = row.every(value => value === symbol);
+      if (win) hasWon = true;
+    }
   });
+  return hasWon;
 };
 
 const checkWinDiagonal = function () {
@@ -63,11 +69,16 @@ const sliceIntoChunks = function (arr, chunkSize) {
   return res;
 };
 
+const play = function () {
+  return prompt('Please enter where to play (x y): ').trim().split(' ');
+};
+
 module.exports = {
   checkWinColumns,
   checkWinRows,
   checkWinDiagonal,
   printBoard,
+  play,
   symbols,
   board,
 };
