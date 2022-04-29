@@ -69,9 +69,11 @@ const sliceIntoChunks = function (arr, chunkSize) {
   return res;
 };
 
-const play = function () {
-  return prompt('Please enter where to play (x y): ').trim().split(' ');
-};
+const play = () =>
+  prompt('Please enter where to play (x y): ')
+    .trim()
+    .split(' ')
+    .map(element => parseInt(element, 10));
 
 module.exports = {
   checkWinColumns,
