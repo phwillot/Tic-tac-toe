@@ -2,7 +2,7 @@
 
 ## Overwiew
 
-The goal of this project was to recreate the famous Tic-Tac-Toe game.
+The goal of this personnal project was to recreate the famous Tic-Tac-Toe game.
 
 I made two versions of it :
 
