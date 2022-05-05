@@ -12,21 +12,25 @@
     <div class="container">
       <h1>Tic-Tac-Toe</h1>
       <div class="row">
+        <div class="tile border-right"></div>
         <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+        <div class="tile border-left"></div>
       </div>
       <div class="row">
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+        <div class="tile border-right border-top border-bottom"></div>
+        <div class="tile border-top border-bottom"></div>
+        <div class="tile border-left border-top border-bottom"></div>
       </div>
       <div class="row">
+        <div class="tile border-right"></div>
         <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+        <div class="tile border-left"></div>
       </div>
-      <button id="btn-reset">Reset</button>
+      <div class="scores">
+        <p>X score: <span class="x-score">0</span></p>
+        <button id="btn-reset">Play Again!</button>
+        <p>O score: <span class="o-score">0</span></p>
+      </div>
       <p id="winner">Waiting for a winner...</p>
     </div>
   </body>

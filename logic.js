@@ -4,11 +4,15 @@
 const tiles = document.querySelectorAll('.tile');
 const btnReset = document.getElementById('btn-reset');
 const winner = document.getElementById('winner');
+const turn = document.querySelector('h1');
+const xscore = document.querySelector('.x-score');
+const oscore = document.querySelector('.o-score');
 
 // Variables
 let counterOfTurns = 0;
 const symbols = ['X', 'O'];
 let finished = false;
+let scores = [0, 0];
 
 const winPositions = [
   [0, 1, 2],
@@ -40,8 +44,12 @@ const hasWon = () => {
     if (
       checkForThreeIdenticalValues(positions, xIndexes) ||
       checkForThreeIdenticalValues(positions, oIndexes)
-    )
+    ) {
+      positions.forEach(position => {
+        tiles[position].style.color = 'green';
+      });
       return true;
+    }
   }
 };
 
@@ -77,6 +85,8 @@ const getO = () => {
 btnReset.addEventListener('click', () => {
   tiles.forEach(tile => {
     tile.innerHTML = '';
+    tile.style.color = 'white';
+    turn.innerHTML = 'Tic-Tac-Toe';
   });
   counterOfTurns = 0;
   finished = false;
@@ -88,15 +98,22 @@ tiles.forEach(tile => {
     if (!finished) {
       if (!tile.innerHTML) {
         tile.innerHTML = changePlayer(counterOfTurns);
+        turn.innerHTML = `${tile.innerHTML === 'X' ? 'O' : 'X'} turn`;
         counterOfTurns++;
       }
       if (hasWon()) {
         counterOfTurns++;
-        winner.innerHTML = `Player with ${changePlayer(
-          counterOfTurns
-        )} wins !!!`;
+        const symbolWinner = changePlayer(counterOfTurns);
+        winner.innerHTML = `Player with ${symbolWinner} wins !!!`;
+        if (symbolWinner === 'X') {
+          scores[0] += 1;
+          xscore.innerHTML = scores[0].toString();
+        } else {
+          scores[1] += 1;
+          oscore.innerHTML = scores[1].toString();
+        }
+
         finished = true;
-        return;
       } else if (counterOfTurns === 9) {
         winner.innerHTML = `It's a draw ! Play again !`;
       }

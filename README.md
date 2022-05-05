@@ -54,9 +54,7 @@ This is a traditionnal Tic-Tac-Toe game, X starts and you play as 2 players and 
 ### Improvements
 
 - Ask players their name before playing
-- Highlight the winning row
 - Adding custom symbols
-- Adding scores in case of multiple games
 
 ### Bugs
 
