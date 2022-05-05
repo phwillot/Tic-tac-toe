@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: bisque;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  justify-content: center;
+}
+
+.tile {
+  width: 120px;
+  height: 120px;
+  border: 3px black solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+}
+
+.tile-text {
+  font-size: 80px;
+}
+
+#btn-reset {
+  display: block;
+  margin-top: 30px;
+  border: none;
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+#winner {
+  font-weight: bold;
+}
