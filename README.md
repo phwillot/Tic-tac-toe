@@ -2,7 +2,7 @@
 
 ## Overwiew
 
-The goal of this project was to recreate the famous Tic-Tac-Toe game.
+The goal of this personnal project was to recreate the famous Tic-Tac-Toe game.
 
 I made two versions of it :
 
@@ -12,10 +12,10 @@ I made two versions of it :
 ## CLI version
 
 The CLI version is located in the console_game folder :
-in order to play the game you have to:
+in order to play you have to:
 
 - Clone the repo
-- type `npm init` on your terminal
+- type `npm install` on your terminal
 - cd into console_game folder
 - type `node game.js`
 
