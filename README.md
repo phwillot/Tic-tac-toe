@@ -15,9 +15,9 @@ The CLI version is located in the console_game folder :
 in order to play you have to:
 
 - Clone the repo
-- type `npm install` on your terminal
+- run `npm install` on your terminal
 - cd into console_game folder
-- type `node game.js`
+- run `node game.js`
 
 ### Functionnalities
 
@@ -45,4 +45,19 @@ No bugs currently known, feel free to report me if there's any.
 
 ## Web version
 
-Currently in development... Stay tuned.
+In order to play the web game, [it's here](https://link-url-here.org).
+
+### Functionnalities
+
+This is a traditionnal Tic-Tac-Toe game, X starts and you play as 2 players and wait until someone wins or it's a draw !
+
+### Improvements
+
+- Ask players their name before playing
+- Highlight the winning row
+- Adding custom symbols
+- Adding scores in case of multiple games
+
+### Bugs
+
+No bugs currently known, feel free to report me if there's any.
