@@ -45,7 +45,7 @@ No bugs currently known, feel free to report me if there's any.
 
 ## Web version
 
-In order to play the web game, [it's here](https://link-url-here.org).
+In order to play the web game, [it's here](https://phwillot.github.io/Tic-tac-toe/).
 
 ### Functionnalities
 
